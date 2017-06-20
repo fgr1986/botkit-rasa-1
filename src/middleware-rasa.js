@@ -16,6 +16,13 @@ module.exports = config => {
         next()
         return
       }
+      // console.log('\t\t[own_debug]  message', message)
+      // probably a robot
+      if( message.bot_id != null ){
+        console.log('\t\t[own_debug]  bot response, not processing')
+        next()
+        return
+      }
 
       debug('Sending message to Rasa', message.text)
       const options = {
